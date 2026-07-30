@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Campus University Expo 2027</title>
+    
+    <meta name="description" content="South Campus University Expo 2027 by Ikatan Mahasiswa Alumni SMAN 1 Lareh Sago Halaban">
+    <meta name="theme-color" content="#0d47a1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        sounix: {
+                            blue: '#1e88e5',
+                            dark: '#0d47a1',
+                            gold: '#fbc02d',
+                            light: '#90caf9'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <style>
+        body {
+            background-color: #0d47a1;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Pagaruyung_Palace_-_2.jpg/1200px-Pagaruyung_Palace_-_2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+        
+        .glass-panel {
+            background: rgba(144, 202, 249, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-btn {
+            background: white;
+            border-radius: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .menu-btn:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+
+        .icon-gradient { background: linear-gradient(135deg, #fbc02d, #f57f17); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .icon-gradient-blue { background: linear-gradient(135deg, #42a5f5, #1e88e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .icon-gradient-green { background: linear-gradient(135deg, #66bb6a, #43a047); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        #mobile-menu { transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; }
+        .view { display: none; }
+        .view.active { display: block; animation: fadeIn 0.3s ease; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .admin-input { border: 1px solid #ccc; padding: 0.5rem; border-radius: 0.375rem; width: 100%; margin-bottom: 0.5rem; font-size: 0.875rem; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased min-h-screen flex flex-col">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="app.navigate('home')">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-sounix-gold transform transition hover:rotate-12">
+                        <i class="fa-solid fa-graduation-cap text-sounix-dark"></i>
+                    </div>
+                    <span class="ml-3 text-white font-bold text-sm leading-tight hidden sm:block drop-shadow-md">
+                        IKATAN MAHASISWA ALUMNI<br>SMAN 1 LAREH SAGO HALABAN
+                    </span>
+                </div>
+                <div class="flex items-center">
+                    <button id="hamburger-btn" class="text-white hover:text-sounix-gold focus:outline-none p-2 transition-transform hover:scale-110">
+                        <i class="fa-solid fa-bars text-3xl drop-shadow-md"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-sounix-dark bg-opacity-95 z-40 hidden opacity-0 transform scale-95 flex flex-col justify-center items-center backdrop-blur-md">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-4xl hover:text-sounix-gold transition-transform hover:rotate-90">&times;</button>
+        <ul class="text-center space-y-4 text-xl font-semibold text-white w-full px-6">
+            <li><a href="#" onclick="app.navigate('home'); app.toggleMenu()" class="block py-2 hover:text-sounix-gold border-b border-gray-600 transition-colors">Beranda</a></li>
+            <li><a href="#" onclick="app.navigate('ptn'); app.toggleMenu()" class="block py-2 hover:text-sounix-gold border-b border-gray-600 transition-colors">Info PTN/PTKIN</a></li>
+            <li><a href="#" onclick="app.navigate('beasiswa'); app.toggleMenu()" class="block py-2 hover:text-sounix-gold border-b border-gray-600 transition-colors">Info Beasiswa</a></li>
+            <li><a href="#" onclick="app.navigate('alumni'); app.toggleMenu()" class="block py-2 hover:text-sounix-gold border-b border-gray-600 transition-colors">Info Alumni</a></li>
+            <li><a href="#" onclick="app.navigate('register'); app.toggleMenu()" class="block py-2 hover:text-sounix-gold border-b border-gray-600 transition-colors">Pendaftaran Expo</a></li>
+            <li><a href="#" id="menu-bantuan" target="_blank" class="block py-2 text-green-400 hover:text-green-300 border-b border-gray-600 transition-colors"><i class="fa-brands fa-whatsapp mr-2"></i>Bantuan</a></li>
+            <li class="pt-8"><a href="#" onclick="app.navigate('admin-login'); app.toggleMenu()" class="text-sm text-gray-400 hover:text-white transition-colors"><i class="fa-solid fa-lock mr-2"></i>Login Admin</a></li>
+        </ul>
+    </div>
+
+    <main class="flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full relative z-10 overflow-hidden">
+        
+        <div id="view-home" class="view active">
+            
+            <div class="text-center mb-10 text-white relative z-10">
+                <i class="fa-solid fa-asterisk text-sounix-gold text-4xl absolute -left-4 top-0 opacity-50 blur-[2px] animate-pulse"></i>
+                <i class="fa-solid fa-asterisk text-sounix-gold text-5xl absolute -right-8 bottom-0 opacity-30 blur-[3px] animate-pulse"></i>
+                
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight drop-shadow-lg" data-aos="fade-down" data-aos-duration="1000">
+                    South Campus 
+                    <span class="bg-sounix-gold text-sounix-dark px-2 py-1 rounded-lg shadow-md rotate-3 inline-block transition-transform hover:rotate-6 hover:scale-105" data-aos="zoom-in" data-aos-delay="300">2027</span>
+                    <br>
+                    <span class="text-sounix-gold text-4xl sm:text-5xl mt-2 block drop-shadow-md" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1000">University Expo</span>
+                </h1>
+                <p class="mt-4 text-xs sm:text-sm font-light tracking-wide bg-black bg-opacity-40 inline-block px-5 py-2 rounded-full backdrop-blur-sm border border-white border-opacity-20 shadow-lg" data-aos="zoom-in" data-aos-delay="400">
+                    Presented by Ikatan Mahasiswa Alumni SMAN 1 Lareh Sago Halaban
+                </p>
+            </div>
+
+            <div class="glass-panel p-4 mb-10" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-2xl font-bold text-white text-center mb-4 drop-shadow-md">Tentang Sounix</h2>
+                <div class="swiper mySwiper rounded-xl overflow-hidden shadow-inner h-64 bg-white bg-opacity-10 p-1">
+                    <div class="swiper-wrapper">
+                        
+                        <div class="swiper-slide bg-white bg-opacity-95 p-6 rounded-xl flex flex-col justify-center items-center text-center shadow-lg border border-blue-200">
+                            <i class="fa-solid fa-bullhorn text-4xl text-sounix-blue mb-3"></i>
+                            <h3 class="font-bold text-sounix-dark text-lg mb-2">Expo Campus SMAN 1</h3>
+                            <p class="text-xs text-gray-700 leading-relaxed">
+                                Sounix merupakan serangkaian kegiatan Expo Campus yang ditujukan untuk siswa SMAN 1 Lareh Sago Halaban, khususnya kelas 12, yang menghadirkan berbagai Perguruan Tinggi di Indonesia.
+                            </p>
+                        </div>
+                        
+                        <div class="swiper-slide bg-white bg-opacity-95 p-6 rounded-xl flex flex-col justify-center items-center text-center shadow-lg border border-yellow-200">
+                            <i class="fa-solid fa-clock-rotate-left text-4xl text-sounix-gold mb-3"></i>
+                            <h3 class="font-bold text-sounix-dark text-lg mb-2">Sejarah Perjalanan</h3>
+                            <p class="text-xs text-gray-700 leading-relaxed">
+                                Sounix tahun 2027 adalah penyelenggaraan ke-4 setelah kegiatan ini sukses dilaksanakan dan dimulai semenjak tahun 2021, 2022, dan 2025.
+                            </p>
+                        </div>
+
+                        <div class="swiper-slide rounded-xl overflow-hidden shadow-lg relative group bg-gray-200 border border-blue-200">
+                            <img id="public-info-banner" src="https://placehold.co/800x600/1e88e5/ffffff?text=Informasi+Terbaru+Sounix" alt="Informasi Sounix" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-sounix-dark to-transparent p-4 text-left pointer-events-none">
+                                <span class="text-white font-bold text-sm drop-shadow-md relative z-10"><i class="fa-solid fa-circle-info mr-2 text-sounix-gold"></i>Pusat Informasi</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <button onclick="app.navigate('ptn')" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="100">
+                        <i class="fa-solid fa-building-columns text-4xl mb-2 icon-gradient-green group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Informasi PTN/PTKIN</span>
+                    </button>
+                    <button onclick="app.showList('snbp', 'Informasi SNBP/SNBT')" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="150">
+                        <i class="fa-solid fa-user-graduate text-4xl mb-2 icon-gradient-blue group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Seputar SNBP/SNBT</span>
+                    </button>
+                    <button onclick="app.navigate('beasiswa')" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="200">
+                        <i class="fa-solid fa-box-open text-4xl mb-2 icon-gradient group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Informasi Beasiswa</span>
+                    </button>
+                    <button onclick="app.navigate('alumni')" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="250">
+                        <i class="fa-solid fa-users text-4xl mb-2 icon-gradient-blue group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Informasi Alumni Souca</span>
+                    </button>
+                    <button onclick="app.showList('berita', 'Informasi Sounix')" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="300">
+                        <i class="fa-brands fa-hive text-4xl mb-2 icon-gradient-green group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Informasi Sounix</span>
+                    </button>
+                    <button onclick="app.showList('pts', 'Informasi PTS')" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="350">
+                        <i class="fa-solid fa-sun text-4xl mb-2 icon-gradient group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Informasi PTS</span>
+                    </button>
+                    <button onclick="app.navigate('register')" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="400">
+                        <i class="fa-solid fa-id-card text-4xl mb-2 icon-gradient-green group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Pendaftaran Expo</span>
+                    </button>
+                    <a href="#" id="grid-bantuan" target="_blank" class="menu-btn p-4 flex flex-col items-center justify-center text-center group" data-aos="zoom-in" data-aos-delay="450">
+                        <i class="fa-solid fa-handshake-angle text-4xl mb-2 icon-gradient-blue group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="text-xs font-bold text-sounix-dark">Bantuan</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-dynamic-list" class="view">
+            <div class="glass-panel p-6 bg-white bg-opacity-95 shadow-xl transition-all">
+                <button onclick="app.navigate('home')" class="mb-4 text-sounix-dark font-bold hover:text-blue-800"><i class="fa-solid fa-arrow-left mr-2"></i>Kembali</button>
+                <h2 id="dynamic-title" class="text-2xl font-bold text-sounix-dark mb-4 border-b-2 border-sounix-gold pb-2">Informasi</h2>
+                <div class="space-y-4" id="dynamic-content-container">
+                </div>
+            </div>
+        </div>
+
+        <div id="view-ptn" class="view">
+            <div class="glass-panel p-6 bg-white bg-opacity-95 shadow-xl">
+                <button onclick="app.navigate('home')" class="mb-4 text-sounix-dark font-bold hover:text-blue-800"><i class="fa-solid fa-arrow-left mr-2"></i>Kembali</button>
+                <h2 class="text-2xl font-bold text-sounix-dark mb-4 border-b-2 border-sounix-gold pb-2">Informasi PTN & PTKIN</h2>
+                <input type="text" id="search-ptn" placeholder="Cari Universitas..." class="w-full p-3 rounded-lg border border-gray-300 mb-4 focus:outline-none focus:ring-2 focus:ring-sounix-blue shadow-sm">
+                <div class="space-y-3 max-h-96 overflow-y-auto pr-2" id="list-ptn"></div>
+            </div>
+        </div>
+
+        <div id="view-beasiswa" class="view">
+            <div class="glass-panel p-6 bg-white bg-opacity-95 shadow-xl">
+                <button onclick="app.navigate('home')" class="mb-4 text-sounix-dark font-bold hover:text-blue-800"><i class="fa-solid fa-arrow-left mr-2"></i>Kembali</button>
+                <h2 class="text-2xl font-bold text-sounix-dark mb-4 border-b-2 border-sounix-gold pb-2">Info Beasiswa Aktif</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="list-beasiswa"></div>
+            </div>
+        </div>
+
+        <div id="view-alumni" class="view">
+            <div class="glass-panel p-6 bg-white bg-opacity-95 shadow-xl">
+                <button onclick="app.navigate('home')" class="mb-4 text-sounix-dark font-bold hover:text-blue-800"><i class="fa-solid fa-arrow-left mr-2"></i>Kembali</button>
+                <h2 class="text-2xl font-bold text-sounix-dark mb-4 border-b-2 border-sounix-gold pb-2">Database Alumni</h2>
+                <input type="text" id="search-alumni" placeholder="Ketik Nama / Universitas..." class="w-full p-3 mb-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-sounix-blue shadow-sm">
+                <div class="overflow-x-auto rounded-lg border shadow-sm">
+                    <table class="min-w-full bg-white text-sm">
+                        <thead class="bg-sounix-dark text-white">
+                            <tr><th class="py-3 px-4 text-left font-semibold">Nama</th><th class="py-3 px-4 text-left font-semibold">Universitas</th><th class="py-3 px-4 text-left font-semibold">Jurusan</th></tr>
+                        </thead>
+                        <tbody id="list-alumni" class="divide-y divide-gray-200"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-register" class="view">
+            <div class="glass-panel p-6 bg-white bg-opacity-95 shadow-2xl">
+                <button onclick="app.navigate('home')" class="mb-4 text-gray-500 hover:text-sounix-dark font-bold transition-colors"><i class="fa-solid fa-arrow-left mr-2"></i>Kembali</button>
+                <h2 class="text-3xl font-extrabold text-sounix-dark mb-2">Pendaftaran Peserta</h2>
+                <p class="text-sm text-gray-500 mb-6">Daftarkan diri kamu untuk mendapatkan e-Ticket SOUNIX 2027 secara instan.</p>
+                <form id="form-register" onsubmit="app.submitRegistration(event)">
+                    <div class="mb-4"><label class="block text-gray-700 font-bold mb-2">Nama Lengkap</label><input type="text" id="reg-name" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sounix-blue transition-shadow"></div>
+                    <div class="mb-4"><label class="block text-gray-700 font-bold mb-2">Kelas / Sekolah</label><input type="text" id="reg-class" required placeholder="Contoh: XII IPA 1 SMAN 1 LSH" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sounix-blue transition-shadow"></div>
+                    <div class="mb-4"><label class="block text-gray-700 font-bold mb-2">Nomor WhatsApp</label><input type="tel" id="reg-wa" required class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sounix-blue transition-shadow"></div>
+                    <div class="mb-6"><label class="block text-gray-700 font-bold mb-2">PTN/Kampus Tujuan Impian</label><input type="text" id="reg-target" required placeholder="Contoh: Universitas Andalas" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-sounix-blue transition-shadow"></div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-sounix-dark to-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:shadow-lg transform hover:-translate-y-1 transition-all flex justify-center items-center">
+                        <i class="fa-solid fa-bolt mr-2 text-yellow-300"></i> Daftar Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div id="view-ticket" class="view">
+            <div class="glass-panel p-4 bg-white shadow-2xl">
+                <button onclick="app.navigate('home')" class="mb-4 text-gray-500 font-bold hover:text-blue-800 transition-colors"><i class="fa-solid fa-home mr-2"></i>Beranda</button>
+                <div id="ticket-canvas" class="bg-gradient-to-br from-sounix-dark to-blue-600 rounded-xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-10 rounded-full -mr-10 -mt-10"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-sounix-gold opacity-20 rounded-full -ml-8 -mb-8"></div>
+                    <div class="flex justify-between items-start border-b border-white border-opacity-30 pb-4 mb-4">
+                        <div><h3 class="font-black text-2xl text-sounix-gold tracking-tight">SOUNIX 2027</h3><p class="text-xs font-light">E-TICKET PESERTA</p></div>
+                        <i class="fa-solid fa-graduation-cap text-4xl opacity-80"></i>
+                    </div>
+                    <div class="space-y-3 relative z-10">
+                        <div><p class="text-[10px] text-blue-200 uppercase">Nama Peserta</p><p class="font-bold text-lg leading-tight" id="ticket-name">Asep Hidayat</p></div>
+                        <div class="flex justify-between">
+                            <div><p class="text-[10px] text-blue-200 uppercase">Asal Sekolah/Kelas</p><p class="font-semibold" id="ticket-class">XII IPS 2</p></div>
+                            <div class="text-right"><p class="text-[10px] text-blue-200 uppercase">ID Tiket</p><p class="font-mono bg-black bg-opacity-30 px-2 py-1 rounded" id="ticket-id">SNX-27-001</p></div>
+                        </div>
+                        <div><p class="text-[10px] text-blue-200 uppercase">Kampus Tujuan</p><p class="font-bold text-sounix-gold" id="ticket-target">UI</p></div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <button onclick="app.downloadTicket()" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all flex justify-center items-center">
+                        <i class="fa-solid fa-file-pdf mr-2"></i> Cetak E-Ticket (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-admin-login" class="view max-w-md mx-auto mt-10">
+            <div class="glass-panel p-8 bg-white shadow-2xl" data-aos="flip-left">
+                <div class="text-center mb-6">
+                    <i class="fa-solid fa-shield-halved text-5xl text-sounix-dark mb-2 drop-shadow-md"></i>
+                    <h2 class="text-2xl font-bold text-gray-800">Admin Portal</h2>
+                    <p class="text-xs text-gray-500 mt-1">Restricted Access</p>
+                </div>
+                <form id="form-admin-login" onsubmit="app.adminLogin(event)">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                        <input type="text" id="admin-username" required class="w-full p-3 border rounded focus:ring-sounix-dark bg-gray-50 transition-shadow">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                        <input type="password" id="admin-password" required class="w-full p-3 border rounded focus:ring-sounix-dark bg-gray-50 transition-shadow">
+                    </div>
+                    <button type="submit" class="w-full bg-sounix-dark text-white font-bold py-3 rounded hover:bg-blue-900 transform hover:-translate-y-1 transition-all shadow-md">
+                        Masuk Dashboard
+                    </button>
+                    <button type="button" onclick="app.navigate('home')" class="w-full mt-3 text-sm text-gray-500 hover:text-gray-800 transition-colors">Kembali ke Beranda</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="view-admin-dashboard" class="view">
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col md:flex-row h-[80vh] w-full max-w-full">
+                <div class="w-full md:w-56 bg-sounix-dark text-white flex flex-col shrink-0">
+                    <div class="p-4 text-center font-bold border-b border-blue-800 text-sm">
+                        <i class="fa-solid fa-crown text-sounix-gold mr-2"></i>SOUNIX ADMIN
+                    </div>
+                    <div class="overflow-y-auto flex-grow p-2 space-y-1 text-xs">
+                        <button onclick="app.showAdminMenu('dash-stats')" class="w-full text-left p-2 rounded hover:bg-blue-800 bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-chart-pie w-5"></i> Statistik</button>
+                        <button onclick="app.showAdminMenu('dash-users')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-users w-5"></i> Pendaftar Expo</button>
+                        <button onclick="app.showAdminMenu('dash-ptn')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-building-columns w-5"></i> Kelola PTN</button>
+                        <button onclick="app.showAdminMenu('dash-snbp')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-user-graduate w-5"></i> Kelola SNBP/SNBT</button>
+                        <button onclick="app.showAdminMenu('dash-beasiswa')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-box-open w-5"></i> Kelola Beasiswa</button>
+                        <button onclick="app.showAdminMenu('dash-alumni')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-user-tie w-5"></i> Kelola Alumni</button>
+                        <button onclick="app.showAdminMenu('dash-berita')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-brands fa-hive w-5"></i> Kelola Berita</button>
+                        <button onclick="app.showAdminMenu('dash-pts')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-sun w-5"></i> Kelola PTS</button>
+                        <button onclick="app.showAdminMenu('dash-settings')" class="w-full text-left p-2 rounded hover:bg-blue-800 admin-menu-btn transition-colors"><i class="fa-solid fa-gear w-5"></i> Pengaturan Umum</button>
+                    </div>
+                    <div class="p-2 border-t border-blue-800">
+                        <button onclick="app.adminLogout()" class="w-full bg-red-600 hover:bg-red-700 text-white p-2 rounded text-xs transition-colors"><i class="fa-solid fa-right-from-bracket mr-2"></i>Logout</button>
+                    </div>
+                </div>
+                
+                <div class="flex-grow bg-gray-50 p-4 overflow-y-auto relative">
+                    
+                    <div id="dash-stats" class="admin-panel block animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Dashboard Overview</h2>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500 hover:shadow-md transition-shadow"><p class="text-gray-500 text-xs font-semibold">Pendaftar Expo</p><p class="text-3xl font-bold text-gray-800" id="stat-pendaftar">0</p></div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-green-500 hover:shadow-md transition-shadow"><p class="text-gray-500 text-xs font-semibold">Total Alumni</p><p class="text-3xl font-bold text-gray-800" id="stat-alumni">0</p></div>
+                        </div>
+                    </div>
+
+                    <div id="dash-users" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-bold text-gray-800">Data Pendaftar Expo</h2>
+                            <button onclick="app.exportToExcel()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 text-sm rounded shadow flex items-center transition-colors"><i class="fa-solid fa-file-excel mr-2"></i> Unduh Excel (CSV)</button>
+                        </div>
+                        <div class="bg-white rounded shadow-sm overflow-x-auto text-sm border border-gray-100">
+                            <table class="min-w-full text-left">
+                                <thead class="bg-gray-100 text-gray-600"><tr><th class="p-3 font-semibold">ID</th><th class="p-3 font-semibold">Nama</th><th class="p-3 font-semibold">Kelas</th><th class="p-3 font-semibold">Target</th></tr></thead>
+                                <tbody id="admin-table-pendaftar" class="divide-y divide-gray-100"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="dash-ptn" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Kelola Data PTN/PTKIN</h2>
+                        <form onsubmit="app.addData(event, 'ptn')" class="bg-white p-4 rounded shadow-sm mb-4 text-sm flex gap-2 border border-gray-100">
+                            <input type="text" id="in-ptn-nama" placeholder="Nama Kampus" required class="admin-input flex-grow">
+                            <input type="text" id="in-ptn-lokasi" placeholder="Provinsi" required class="admin-input w-1/3">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded h-fit hover:bg-blue-700 transition-colors">Tambah</button>
+                        </form>
+                        <div class="bg-white rounded shadow-sm text-sm border border-gray-100" id="admin-list-ptn"></div>
+                    </div>
+
+                    <div id="dash-snbp" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Kelola Info SNBP/SNBT</h2>
+                        <form onsubmit="app.addData(event, 'snbp')" class="bg-white p-4 rounded shadow-sm mb-4 text-sm flex gap-2 border border-gray-100">
+                            <input type="text" id="in-snbp-info" placeholder="Informasi/Judul" required class="admin-input flex-grow">
+                            <input type="text" id="in-snbp-tgl" placeholder="Tanggal/Periode" required class="admin-input w-1/3">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded h-fit hover:bg-blue-700 transition-colors">Tambah</button>
+                        </form>
+                        <div class="bg-white rounded shadow-sm text-sm p-3 border border-gray-100" id="admin-list-snbp"></div>
+                    </div>
+
+                    <div id="dash-beasiswa" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Kelola Beasiswa</h2>
+                        <form onsubmit="app.addData(event, 'beasiswa')" class="bg-white p-4 rounded shadow-sm mb-4 text-sm border border-gray-100">
+                            <div class="flex gap-2 mb-2">
+                                <input type="text" id="in-bea-nama" placeholder="Nama Beasiswa" required class="admin-input flex-grow">
+                                <input type="text" id="in-bea-penyelenggara" placeholder="Penyelenggara" required class="admin-input w-1/2">
+                            </div>
+                            <div class="flex gap-2">
+                                <select id="in-bea-status" class="admin-input w-1/3">
+                                    <option>Masih Dibuka</option><option>Segera Ditutup</option><option>Ditutup</option>
+                                </select>
+                                <input type="text" id="in-bea-dl" placeholder="Deadline" required class="admin-input w-1/3">
+                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded w-1/3 h-fit hover:bg-blue-700 transition-colors">Tambah</button>
+                            </div>
+                        </form>
+                        <div class="bg-white rounded shadow-sm text-sm p-3 border border-gray-100" id="admin-list-beasiswa"></div>
+                    </div>
+
+                    <div id="dash-alumni" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Kelola Data Alumni</h2>
+                        <form onsubmit="app.addData(event, 'alumni')" class="bg-white p-4 rounded shadow-sm mb-4 text-sm flex gap-2 flex-wrap border border-gray-100">
+                            <input type="text" id="in-alu-nama" placeholder="Nama Alumni" required class="admin-input w-[48%]">
+                            <input type="text" id="in-alu-univ" placeholder="Universitas" required class="admin-input w-[48%]">
+                            <input type="text" id="in-alu-jurusan" placeholder="Jurusan" required class="admin-input flex-grow">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded h-fit hover:bg-blue-700 transition-colors">Tambah</button>
+                        </form>
+                        <div class="bg-white rounded shadow-sm text-sm border border-gray-100" id="admin-list-alumni"></div>
+                    </div>
+
+                    <div id="dash-berita" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Kelola Berita Sounix</h2>
+                        <form onsubmit="app.addData(event, 'berita')" class="bg-white p-4 rounded shadow-sm mb-4 text-sm border border-gray-100">
+                            <input type="text" id="in-ber-judul" placeholder="Judul Berita" required class="admin-input">
+                            <textarea id="in-ber-isi" placeholder="Isi Berita" required class="admin-input h-24"></textarea>
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">Terbitkan Berita</button>
+                        </form>
+                        <div class="bg-white rounded shadow-sm text-sm p-3 border border-gray-100" id="admin-list-berita"></div>
+                    </div>
+
+                    <div id="dash-pts" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Kelola Informasi PTS</h2>
+                        <form onsubmit="app.addData(event, 'pts')" class="bg-white p-4 rounded shadow-sm mb-4 text-sm flex gap-2 border border-gray-100">
+                            <input type="text" id="in-pts-nama" placeholder="Nama PTS" required class="admin-input flex-grow">
+                            <input type="text" id="in-pts-lokasi" placeholder="Provinsi" required class="admin-input w-1/3">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded h-fit hover:bg-blue-700 transition-colors">Tambah</button>
+                        </form>
+                        <div class="bg-white rounded shadow-sm text-sm p-3 border border-gray-100" id="admin-list-pts"></div>
+                    </div>
+
+                    <div id="dash-settings" class="admin-panel hidden animate-[fadeIn_0.3s_ease]">
+                        <h2 class="text-xl font-bold mb-4 text-gray-800">Pengaturan Umum</h2>
+                        
+                        <div class="bg-white p-4 rounded shadow-sm mb-4 border border-gray-100">
+                            <h3 class="font-bold text-sm mb-2 text-sounix-dark"><i class="fa-brands fa-whatsapp mr-2"></i>Nomor WhatsApp Bantuan</h3>
+                            <form onsubmit="app.updateSettings(event, 'wa')" class="text-sm flex gap-2">
+                                <input type="tel" id="in-bantuan-wa" placeholder="Contoh: 628123456789" required class="admin-input flex-grow">
+                                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded h-fit hover:bg-green-700 transition-colors">Simpan</button>
+                            </form>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded shadow-sm mb-4 border border-gray-100">
+                            <h3 class="font-bold text-sm mb-2 text-sounix-dark"><i class="fa-solid fa-image mr-2"></i>Gambar Kotak Informasi</h3>
+                            <p class="text-xs text-gray-500 mb-2">Tempelkan Link/URL gambar untuk mengganti gambar di slider Kotak 3.</p>
+                            <form onsubmit="app.updateSettings(event, 'banner')" class="text-sm flex gap-2">
+                                <input type="url" id="in-banner-url" placeholder="https://contoh.com/gambar.jpg" required class="admin-input flex-grow">
+                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded h-fit hover:bg-blue-700 transition-colors">Ubah Gambar</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="mt-auto relative z-10 w-full glass-panel !rounded-none !rounded-t-3xl bg-opacity-70 text-white mt-10 p-6 md:p-8 text-sm" data-aos="fade-up" data-aos-duration="800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+                <i class="fa-solid fa-location-dot text-3xl mr-4 text-sounix-gold animate-bounce"></i>
+                <div>
+                    <h4 class="font-bold text-lg mb-1">Sekretariat</h4>
+                    <p class="font-light">SMA NEGERI 1 LAREH SAGO HALABAN<br>Jln Lintas Payakumbuh-Lintau Km 12</p>
+                </div>
+            </div>
+            <div class="md:text-right">
+                <h4 class="font-bold text-lg mb-2">More Information:</h4>
+                <ul class="space-y-2 inline-block text-left md:text-right">
+                    <li><a href="#" class="hover:text-sounix-gold transition-colors"><i class="fa-brands fa-instagram w-6"></i> @sounix_selatan</a></li>
+                    <li><a href="mailto:sounix27@gmail.com" class="hover:text-sounix-gold transition-colors"><i class="fa-regular fa-envelope w-6"></i> sounix27@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-8 border-t border-white border-opacity-20 pt-4 font-light text-xs opacity-75 hover:opacity-100 transition-opacity">
+            &copy;Copyright by Ikatan Mahasiswa Alumni SMAN 1 Lareh Sago Halaban. All Right Reserved
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, query, getDocs, updateDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'sounix-expo-2027';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        
+        // --- Core Application Logic ---
+        window.app = {
+            currentView: 'home',
+            db: null,
+            auth: null,
+            
+            // Local state caching
+            data: {
+                ptn: [],
+                snbp: [],
+                beasiswa: [],
+                alumni: [],
+                berita: [],
+                pts: [],
+                pendaftar: [],
+                settings: { 
+                    wa: '6283846905690',
+                    bannerUrl: 'https://placehold.co/800x600/1e88e5/ffffff?text=Informasi+Terbaru+Sounix'
+                }
+            },
+            
+            init: async () => {
+                AOS.init({ once: true, offset: 50, duration: 600, easing: 'ease-out-cubic' });
+
+                new Swiper(".mySwiper", { 
+                    slidesPerView: 3, 
+                    spaceBetween: 15, 
+                    autoplay: { delay: 4000, disableOnInteraction: false }, 
+                    loop: true,
+                    pagination: { el: ".swiper-pagination", clickable: true },
+                    breakpoints: { 320: { slidesPerView: 1 }, 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } 
+                });
+
+                document.getElementById('hamburger-btn').addEventListener('click', app.toggleMenu);
+                document.getElementById('close-menu-btn').addEventListener('click', app.toggleMenu);
+                
+                window.addEventListener('scroll', () => {
+                    const nav = document.getElementById('navbar');
+                    if (window.scrollY > 20) {
+                        nav.classList.add('bg-sounix-dark', 'shadow-lg');
+                        nav.classList.remove('bg-transparent');
+                    } else {
+                        nav.classList.add('bg-transparent');
+                        nav.classList.remove('bg-sounix-dark', 'shadow-lg');
+                    }
+                });
+
+                document.getElementById('search-ptn').addEventListener('input', (e) => app.renderPTN(e.target.value));
+                document.getElementById('search-alumni').addEventListener('input', (e) => app.renderAlumni(e.target.value));
+
+                if (firebaseConfig) {
+                    await app.initFirebase();
+                } else {
+                    app.showToast('Info', 'Running in local mode. Changes will not be saved permanently.', 'info');
+                    app.seedInitialData();
+                    app.renderAll();
+                }
+            },
+
+            initFirebase: async () => {
+                const firebaseApp = initializeApp(firebaseConfig);
+                app.db = getFirestore(firebaseApp);
+                app.auth = getAuth(firebaseApp);
+
+                try {
+                    if (typeof __initial_auth_token !== 'undefined') {
+                        await signInWithCustomToken(app.auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(app.auth);
+                    }
+                    console.log("Firebase authenticated successfully");
+                    app.setupRealtimeListeners();
+                } catch (error) {
+                    console.error("Firebase auth failed:", error);
+                    app.showToast('Error', 'Gagal terhubung ke database', 'error');
+                }
+            },
+
+            setupRealtimeListeners: () => {
+                if (!app.auth.currentUser) return;
+
+                const collections = ['ptn', 'snbp', 'beasiswa', 'alumni', 'berita', 'pts', 'pendaftar'];
+                
+                collections.forEach(colName => {
+                    const colRef = collection(app.db, 'artifacts', appId, 'public', 'data', colName);
+                    onSnapshot(query(colRef), (snapshot) => {
+                        app.data[colName] = [];
+                        snapshot.forEach((doc) => {
+                            app.data[colName].push({ id: doc.id, ...doc.data() });
+                        });
+                        app.renderAll();
+                    }, (error) => {
+                        console.error(`Error fetching ${colName}:`, error);
+                    });
+                });
+
+                const settingsRef = doc(app.db, 'artifacts', appId, 'public', 'data', 'settings', 'general');
+                onSnapshot(settingsRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        app.data.settings = docSnap.data();
+                        app.updatePublicSettings();
+                    } else {
+                         setDoc(settingsRef, app.data.settings);
+                    }
+                }, (error) => {
+                     console.error("Error fetching settings:", error);
+                });
+            },
+
+            seedInitialData: () => {
+                app.data.ptn = [
+                    { id: '1', nama: 'Universitas Andalas', lokasi: 'Sumatera Barat', logo: 'fa-building' },
+                    { id: '2', nama: 'Universitas Indonesia', lokasi: 'Jawa Barat', logo: 'fa-building' }
+                ];
+                app.data.snbp = [
+                    { id: '1', info: 'Pendaftaran SNBP 2027 Resmi Dibuka', tgl: '14 Feb 2027' },
+                    { id: '2', info: 'Pengumuman Kuota Sekolah', tgl: '28 Des 2026' }
+                ];
+                app.data.beasiswa = [
+                    { id: '1', nama: 'KIP Kuliah 2027', penyelenggara: 'Kemdikbudristek', status: 'Masih Dibuka', deadline: '30 Okt 2027' }
+                ];
+                app.data.alumni = [
+                    { id: '1', nama: 'Asep Hidayat', univ: 'ITB', jurusan: 'Teknik Informatika' }
+                ];
+                app.data.berita = [
+                    { id: '1', judul: 'Persiapan Expo Sounix 2027', isi: 'Panitia mulai merapatkan barisan untuk acara spektakuler tahun ini.', tgl: 'HARI INI' }
+                ];
+                app.data.pts = [
+                    { id: '1', nama: 'Telkom University', lokasi: 'Jawa Barat' }
+                ];
+            },
+
+            navigate: (viewId) => {
+                document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+                window.scrollTo({ top: 0, behavior: 'auto' });
+                document.getElementById('view-' + viewId).classList.add('active');
+                app.currentView = viewId;
+                setTimeout(() => { AOS.refresh(); }, 100);
+            },
+
+            toggleMenu: () => {
+                const menu = document.getElementById('mobile-menu');
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    requestAnimationFrame(() => { menu.classList.remove('opacity-0', 'scale-95'); menu.classList.add('opacity-100', 'scale-100'); });
+                } else {
+                    menu.classList.remove('opacity-100', 'scale-100'); menu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => menu.classList.add('hidden'), 300);
+                }
+            },
+
+            showToast: (title, text, icon = 'info') => {
+                Swal.fire({ toast: true, position: 'top-end', icon: icon, title: title, text: text, showConfirmButton: false, timer: 2000 });
+            },
+
+            updatePublicSettings: () => {
+                const link = `https://wa.me/${app.data.settings.wa}?text=Halo%20Admin%20SOUNIX%202027,%20saya%20butuh%20bantuan.`;
+                document.getElementById('menu-bantuan').href = link;
+                document.getElementById('grid-bantuan').href = link;
+                if(document.getElementById('in-bantuan-wa')) document.getElementById('in-bantuan-wa').value = app.data.settings.wa;
+
+                document.getElementById('public-info-banner').src = app.data.settings.bannerUrl;
+                if(document.getElementById('in-banner-url')) document.getElementById('in-banner-url').value = app.data.settings.bannerUrl;
+            },
+
+            renderAll: () => {
+                app.renderPTN();
+                app.renderBeasiswa();
+                app.renderAlumni();
+                app.renderAdminAll();
+            },
+
+            showList: (type, title) => {
+                document.getElementById('dynamic-title').innerText = title;
+                const container = document.getElementById('dynamic-content-container');
+                container.innerHTML = '';
+                
+                let dataList = app.data[type] || [];
+                if(dataList.length === 0) { 
+                    container.innerHTML = '<p class="text-gray-500 italic text-center p-4">Belum ada informasi.</p>'; 
+                }
+                else {
+                    dataList.forEach((item, index) => {
+                        let delay = index * 50;
+                        if(type === 'snbp') container.innerHTML += `<div data-aos="fade-up" data-aos-delay="${delay}" class="p-4 border border-gray-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"><p class="font-bold text-gray-800">${item.info}</p><p class="text-xs text-blue-600 mt-1"><i class="fa-regular fa-calendar-check mr-1"></i>${item.tgl}</p></div>`;
+                        if(type === 'berita') container.innerHTML += `<div data-aos="fade-up" data-aos-delay="${delay}" class="p-5 border border-gray-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow"><h3 class="font-bold text-lg text-gray-800">${item.judul}</h3><p class="text-xs text-gray-400 mb-3"><i class="fa-regular fa-clock mr-1"></i>${item.tgl}</p><p class="text-sm text-gray-600 leading-relaxed">${item.isi}</p></div>`;
+                        if(type === 'pts') container.innerHTML += `<div data-aos="fade-up" data-aos-delay="${delay}" class="p-4 border border-gray-100 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow flex items-center"><div class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-full flex justify-center items-center mr-4"><i class="fa-solid fa-building"></i></div><div><p class="font-bold text-gray-800">${item.nama}</p><p class="text-xs text-gray-500">${item.lokasi}</p></div></div>`;
+                    });
+                }
+                app.navigate('dynamic-list');
+            },
+
+            renderPTN: (filter = '') => {
+                const container = document.getElementById('list-ptn'); 
+                if(!container) return;
+                container.innerHTML = '';
+                const filtered = app.data.ptn.filter(p => p.nama.toLowerCase().includes(filter.toLowerCase()));
+                filtered.forEach((p, index) => {
+                    let delay = (index < 10) ? index * 50 : 0;
+                    container.innerHTML += `<div data-aos="fade-up" data-aos-delay="${delay}" class="flex items-center p-3 border border-gray-100 rounded-lg bg-white shadow-sm hover:shadow-md hover:border-blue-200 transition-all cursor-default"><div class="w-10 h-10 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mr-4"><i class="fa-solid ${p.logo || 'fa-building'}"></i></div><div><h4 class="font-bold text-gray-800 text-sm">${p.nama}</h4><p class="text-[10px] text-gray-500"><i class="fa-solid fa-map-pin mr-1"></i>${p.lokasi}</p></div></div>`;
+                });
+            },
+            
+            renderBeasiswa: () => {
+                const container = document.getElementById('list-beasiswa'); 
+                if(!container) return;
+                container.innerHTML = '';
+                app.data.beasiswa.forEach((b, index) => {
+                    let delay = index * 100;
+                    let color = b.status.includes('Masih') ? 'bg-green-100 text-green-700 border-green-200' : 'bg-red-100 text-red-700 border-red-200';
+                    container.innerHTML += `<div data-aos="fade-up" data-aos-delay="${delay}" class="border border-gray-100 rounded-lg p-5 bg-white shadow-sm hover:shadow-md transition-shadow"><h4 class="font-bold text-gray-800 text-lg mb-1">${b.nama} <span class="text-[10px] px-2 py-1 rounded border ${color} float-right shadow-sm">${b.status}</span></h4><p class="text-sm text-gray-600 mt-3"><i class="fa-solid fa-building-user mr-2 text-gray-400"></i>${b.penyelenggara}</p><p class="text-xs text-red-500 mt-1"><i class="fa-regular fa-clock mr-1"></i>Deadline: ${b.deadline}</p></div>`;
+                });
+            },
+
+            renderAlumni: (filter = '') => {
+                const container = document.getElementById('list-alumni');
+                if(!container) return;
+                container.innerHTML = '';
+                const filtered = app.data.alumni.filter(a => a.nama.toLowerCase().includes(filter.toLowerCase()) || a.univ.toLowerCase().includes(filter.toLowerCase()));
+                filtered.forEach(a => {
+                    container.innerHTML += `<tr class="hover:bg-gray-50 transition-colors"><td class="py-3 px-4">${a.nama}</td><td class="py-3 px-4">${a.univ}</td><td class="py-3 px-4">${a.jurusan}</td></tr>`;
+                });
+            },
+
+            submitRegistration: async (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Mendaftar...';
+                btn.disabled = true;
+
+                const name = document.getElementById('reg-name').value;
+                const cls = document.getElementById('reg-class').value;
+                const wa = document.getElementById('reg-wa').value;
+                const target = document.getElementById('reg-target').value;
+                
+                const newIdStr = 'SNX-27-' + String(app.data.pendaftar.length + 1).padStart(3, '0');
+
+                const newRegistrant = {
+                    nama: name, kelas: cls, wa: wa, target: target, id_tiket: newIdStr, tgl_daftar: new Date().toISOString()
+                };
+
+                try {
+                    if (app.db && app.auth?.currentUser) {
+                        const docRef = doc(collection(app.db, 'artifacts', appId, 'public', 'data', 'pendaftar'));
+                        await setDoc(docRef, newRegistrant);
+                    } else {
+                        newRegistrant.id = Date.now().toString();
+                        app.data.pendaftar.push(newRegistrant);
+                    }
+
+                    document.getElementById('ticket-name').innerText = name;
+                    document.getElementById('ticket-class').innerText = cls;
+                    document.getElementById('ticket-id').innerText = newIdStr;
+                    document.getElementById('ticket-target').innerText = target;
+
+                    app.showToast('Berhasil', 'Pendaftaran sukses! Silakan unduh e-ticket.', 'success');
+                    document.getElementById('form-register').reset();
+                    app.navigate('ticket');
+                } catch (error) {
+                    console.error("Registration error:", error);
+                    app.showToast('Gagal', 'Terjadi kesalahan saat mendaftar.', 'error');
+                } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            },
+
+            downloadTicket: () => {
+                const el = document.getElementById('ticket-canvas');
+                html2canvas(el, { scale: 2, useCORS: true }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jspdf.jsPDF('l', 'px', [canvas.width, canvas.height]);
+                    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+                    pdf.save(`Ticket_SOUNIX2027_${document.getElementById('ticket-id').innerText}.pdf`);
+                });
+            },
+
+            adminLogin: (e) => {
+                e.preventDefault();
+                const u = document.getElementById('admin-username').value;
+                const p = document.getElementById('admin-password').value;
+                if (u === 'farid' && p === 'faridsouca') {
+                    app.showToast('Berhasil Login', 'Selamat datang di Dashboard', 'success');
+                    app.navigate('admin-dashboard');
+                    app.showAdminMenu('dash-stats');
+                    app.renderAdminAll();
+                } else {
+                    app.showToast('Akses Ditolak', 'Username atau Password salah!', 'error');
+                }
+            },
+
+            adminLogout: () => {
+                Swal.fire({
+                    title: 'Keluar?', text: "Anda akan keluar dari Dashboard Admin", icon: 'warning', showCancelButton: true, confirmButtonColor: '#0d47a1', cancelButtonColor: '#d33', confirmButtonText: 'Ya, Keluar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        app.navigate('home');
+                        app.showToast('Berhasil Logout', 'Sesi anda telah berakhir', 'info');
+                    }
+                });
+            },
+
+            showAdminMenu: (menuId) => {
+                document.querySelectorAll('.admin-panel').forEach(el => { el.classList.remove('block'); el.classList.add('hidden'); });
+                document.getElementById(menuId).classList.remove('hidden'); document.getElementById(menuId).classList.add('block');
+                
+                document.querySelectorAll('.admin-menu-btn').forEach(btn => btn.classList.remove('bg-blue-800'));
+                event.currentTarget.classList.add('bg-blue-800');
+            },
+
+            addData: async (e, type) => {
+                e.preventDefault();
+                let newData = {};
+                let targetCollection = type;
+
+                if (type === 'ptn') {
+                    newData = { nama: document.getElementById('in-ptn-nama').value, lokasi: document.getElementById('in-ptn-lokasi').value, logo: 'fa-building' };
+                } else if (type === 'snbp') {
+                    newData = { info: document.getElementById('in-snbp-info').value, tgl: document.getElementById('in-snbp-tgl').value };
+                } else if (type === 'beasiswa') {
+                    newData = { nama: document.getElementById('in-bea-nama').value, penyelenggara: document.getElementById('in-bea-penyelenggara').value, status: document.getElementById('in-bea-status').value, deadline: document.getElementById('in-bea-dl').value };
+                } else if (type === 'alumni') {
+                    newData = { nama: document.getElementById('in-alu-nama').value, univ: document.getElementById('in-alu-univ').value, jurusan: document.getElementById('in-alu-jurusan').value };
+                } else if (type === 'berita') {
+                    const today = new Date().toLocaleDateString('id-ID', {day: 'numeric', month: 'short', year: 'numeric'});
+                    newData = { judul: document.getElementById('in-ber-judul').value, isi: document.getElementById('in-ber-isi').value, tgl: today };
+                } else if (type === 'pts') {
+                    newData = { nama: document.getElementById('in-pts-nama').value, lokasi: document.getElementById('in-pts-lokasi').value };
+                }
+
+                try {
+                    if (app.db && app.auth?.currentUser) {
+                        const docRef = doc(collection(app.db, 'artifacts', appId, 'public', 'data', targetCollection));
+                        await setDoc(docRef, newData);
+                        app.showToast('Sukses', 'Data berhasil ditambahkan ke database', 'success');
+                    } else {
+                        newData.id = Date.now().toString();
+                        app.data[type].push(newData);
+                        app.showToast('Sukses', 'Data ditambahkan (Lokal)', 'success');
+                        app.renderAdminAll();
+                    }
+                    e.target.reset();
+                } catch (error) {
+                    console.error("Error adding data:", error);
+                    app.showToast('Error', 'Gagal menambahkan data', 'error');
+                }
+            },
+
+            deleteData: async (type, id) => {
+                Swal.fire({
+                    title: 'Hapus Data?', text: "Data tidak dapat dikembalikan!", icon: 'warning', showCancelButton: true, confirmButtonColor: '#d33', cancelButtonColor: '#3085d6', confirmButtonText: 'Ya, Hapus'
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+                        try {
+                            if (app.db && app.auth?.currentUser && id.toString().length > 5) {
+                                const docRef = doc(app.db, 'artifacts', appId, 'public', 'data', type, id);
+                                await deleteDoc(docRef);
+                            } else {
+                                app.data[type] = app.data[type].filter(item => item.id !== id);
+                                app.renderAdminAll();
+                            }
+                            app.showToast('Terhapus', 'Data berhasil dihapus.', 'success');
+                        } catch (error) {
+                            console.error("Error deleting data:", error);
+                            app.showToast('Error', 'Gagal menghapus data', 'error');
+                        }
+                    }
+                });
+            },
+
+            updateSettings: async (e, type) => {
+                e.preventDefault();
+                let updates = {};
+                
+                if (type === 'wa') {
+                    updates.wa = document.getElementById('in-bantuan-wa').value;
+                    app.data.settings.wa = updates.wa;
+                } else if (type === 'banner') {
+                    updates.bannerUrl = document.getElementById('in-banner-url').value;
+                    app.data.settings.bannerUrl = updates.bannerUrl;
+                }
+
+                try {
+                    if (app.db && app.auth?.currentUser) {
+                        const settingsRef = doc(app.db, 'artifacts', appId, 'public', 'data', 'settings', 'general');
+                        await updateDoc(settingsRef, updates);
+                    }
+                    app.showToast('Tersimpan', 'Pengaturan berhasil diperbarui.', 'success');
+                    app.updatePublicSettings();
+                } catch (error) {
+                    console.error("Error updating settings:", error);
+                    app.showToast('Error', 'Gagal menyimpan pengaturan', 'error');
+                }
+            },
+
+            renderAdminAll: () => {
+                if(document.getElementById('stat-pendaftar')) document.getElementById('stat-pendaftar').innerText = app.data.pendaftar.length;
+                if(document.getElementById('stat-alumni')) document.getElementById('stat-alumni').innerText = app.data.alumni.length;
+
+                const tPendaftar = document.getElementById('admin-table-pendaftar');
+                if(tPendaftar) {
+                    tPendaftar.innerHTML = '';
+                    app.data.pendaftar.forEach(p => {
+                        tPendaftar.innerHTML += `<tr class="hover:bg-gray-50"><td class="p-3 border-t font-mono text-xs">${p.id_tiket}</td><td class="p-3 border-t">${p.nama}</td><td class="p-3 border-t">${p.kelas}</td><td class="p-3 border-t">${p.target}</td></tr>`;
+                    });
+                }
+
+                app.renderAdminList('ptn', (i) => `<div class="flex justify-between items-center p-3 border-b border-gray-100 hover:bg-gray-50"><div><span class="font-bold">${i.nama}</span> <span class="text-xs text-gray-500">(${i.lokasi})</span></div><button onclick="app.deleteData('ptn', '${i.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button></div>`);
+                app.renderAdminList('snbp', (i) => `<div class="flex justify-between items-center p-3 border-b border-gray-100 hover:bg-gray-50"><div><span class="font-bold">${i.info}</span> <span class="text-xs text-gray-500">(${i.tgl})</span></div><button onclick="app.deleteData('snbp', '${i.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button></div>`);
+                app.renderAdminList('beasiswa', (i) => `<div class="flex justify-between items-center p-3 border-b border-gray-100 hover:bg-gray-50"><div><span class="font-bold">${i.nama}</span> <span class="text-xs bg-gray-200 px-1 rounded ml-1">${i.status}</span></div><button onclick="app.deleteData('beasiswa', '${i.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button></div>`);
+                app.renderAdminList('alumni', (i) => `<div class="flex justify-between items-center p-3 border-b border-gray-100 hover:bg-gray-50"><div><span class="font-bold">${i.nama}</span> - <span class="text-sm">${i.univ}</span> <span class="text-xs text-gray-500">(${i.jurusan})</span></div><button onclick="app.deleteData('alumni', '${i.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button></div>`);
+                app.renderAdminList('berita', (i) => `<div class="flex justify-between items-center p-3 border-b border-gray-100 hover:bg-gray-50"><div><span class="font-bold">${i.judul}</span> <span class="text-xs text-gray-500 ml-2">${i.tgl}</span></div><button onclick="app.deleteData('berita', '${i.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button></div>`);
+                app.renderAdminList('pts', (i) => `<div class="flex justify-between items-center p-3 border-b border-gray-100 hover:bg-gray-50"><div><span class="font-bold">${i.nama}</span> <span class="text-xs text-gray-500">(${i.lokasi})</span></div><button onclick="app.deleteData('pts', '${i.id}')" class="text-red-500 hover:text-red-700 p-1"><i class="fa-solid fa-trash"></i></button></div>`);
+            },
+
+            renderAdminList: (type, templateFn) => {
+                const container = document.getElementById(`admin-list-${type}`);
+                if (!container) return;
+                
+                let html = '';
+                if(app.data[type].length === 0) { html = '<p class="text-gray-500 italic p-3">Belum ada data.</p>'; }
+                else { app.data[type].forEach(item => { html += templateFn(item); }); }
+                container.innerHTML = html;
+            },
+
+            exportToExcel: () => {
+                if(app.data.pendaftar.length === 0) return app.showToast('Gagal', 'Tidak ada data untuk diunduh', 'warning');
+                
+                let csvContent = "data:text/csv;charset=utf-8,ID Tiket,Nama Lengkap,Kelas,Target Kampus\n";
+                app.data.pendaftar.forEach(row => {
+                    csvContent += `"${row.id_tiket}","${row.nama}","${row.kelas}","${row.target}"\n`;
+                });
+                
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "Data_Pendaftar_Sounix.csv");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        };
+
+        // Bootstrap the application
+        document.addEventListener('DOMContentLoaded', window.app.init);
+
+    </script>
+</body>
+</html>
